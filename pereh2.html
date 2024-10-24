@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страшный сайт</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 3em;
+            text-transform: uppercase;
+            color: crimson;
+            text-shadow: 0 0 10px red, 0 0 20px crimson;
+            animation: flicker 2s infinite;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 1.5em;
+            color: white;
+            background-color: darkred;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: 0.3s ease;
+            box-shadow: 0 0 10px red, 0 0 20px crimson;
+        }
+
+        .btn:hover {
+            background-color: crimson;
+            box-shadow: 0 0 20px darkred, 0 0 40px crimson;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup {
+            background-color: #222;
+            border: 1px solid crimson;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px crimson;
+            text-align: center;
+        }
+
+        .popup h2 {
+            margin-bottom: 15px;
+        }
+
+        .popup .btn-confirm {
+            background-color: crimson;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .popup .btn-confirm:hover {
+            background-color: darkred;
+        }
+
+        .popup .btn-cancel {
+            background-color: darkred;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: 0.3s ease;
+            margin-left: 10px;
+        }
+
+        .popup .btn-cancel:hover {
+            background-color: crimson;
+        }
+
+        @keyframes flicker {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            70% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Точно хочешь?</h1>
+    <button class="btn" onclick="showPopup()">Узнать</button>
+
+    <div class="overlay" id="overlay">
+        <div class="popup">
+            <h2>Вы действительно хотите продолжить?</h2>
+            <button class="btn-confirm" onclick="confirmRedirect()">Да</button>
+            <button class="btn-cancel" onclick="closePopup()">Нет</button>
+        </div>
+    </div>
+
+    <script>
+        function showPopup() {
+            document.getElementById('overlay').style.display = 'flex';
+        }
+
+        function closePopup() {
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        function confirmRedirect() {
+            window.location.href = 'https://siplasisya.github.io/what-is-it/';
+        }
+    </script>
+</body>
+</html>
